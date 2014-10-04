@@ -31,7 +31,7 @@ public class TestMyPhonyForProtected extends PhonyList {
     /**
      * Some tests for removeRange(int.int). It will rise an exception.
      * @passed Yes
-     * @type Functional
+     * @type Functional   
      * @see system.PhonyList#removeRange(int, int)
      */
     @Test(expected = IndexOutOfBoundsException.class)
