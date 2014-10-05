@@ -61,8 +61,8 @@ public class TestMyPhony {
      * Test the "get" method with a list.
      * @see PhonyList#get(int)
      * @type Functional
-     * @input list[1,2,3]
-     * @oracle The element got must be in the right place.
+     * @input list[1,2,3] index=0,2,1
+     * @oracle The right place is always with the right element.
      * @passed Yes
      */
     @Test
@@ -71,6 +71,29 @@ public class TestMyPhony {
         assertEquals(1,(int)mylist.get(0));
         assertEquals(3,(int)mylist.get(2));
         assertEquals(2,(int)mylist.get(1));
+        assertEquals(3,(int)mylist.get(mylist.indexOf(3)));
+    }
+
+    /**
+     * Test the "get" method with a list.
+     * @see PhonyList#get(int)
+     * @type Functional
+     * @input list[1,2,3,null] index=0,2,1,3
+     * @oracle The right place is always with the right element.
+     * @passed Yes
+     */
+    @Test
+    public void getElementNull(){
+        PhonyList<Object> mylist=new PhonyList<>();
+        mylist.add(1);
+        mylist.add(2);
+        mylist.add(null);
+        mylist.add(3);
+
+        assertEquals(1,(int)mylist.get(0));
+        assertEquals(3,(int)mylist.get(3));
+        assertEquals(2,(int)mylist.get(1));
+        assertEquals(null,mylist.get(mylist.indexOf(null)));
     }
 
     /**
@@ -115,10 +138,10 @@ public class TestMyPhony {
      * @see system.PhonyList#set(int, Object)
      * @type Functional
      * @input list[1] index=-1
-     * @oracle The exception IndexOutOfBoundsException must rise.
+     * @oracle The exception ArrayIndexOutOfBoundsException must rise.
      * @passed Yes
      */
-    @Test(expected = IndexOutOfBoundsException.class)
+    @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void testSetNegativeIndex() {
         PhonyList<Object> l = new PhonyList<>();
         boolean res=l.add(1);
@@ -189,7 +212,7 @@ public class TestMyPhony {
      * @passed Yes
      */
     @Test
-    public void removeElementNullWithOtherElement(){
+    public void removeElementNull(){
         PhonyList<Object> l=new PhonyList<>();
         l.add(1);
         l.add(null);
@@ -246,6 +269,24 @@ public class TestMyPhony {
         assertEquals(0,l.size());
         assertEquals(-1,l.indexOf(1));
     }
+
+    /**
+     * Test for "remove". To remove from an empty list
+     * @see system.PhonyList#remove(Object)
+     * @type Functional
+     * @input list[] o=1
+     * @oracle The new list must be empty.
+     * @passed Yes
+     */
+    @Test
+    public void removeEmptyList(){
+        PhonyList<Integer> l=new PhonyList<>();
+
+        boolean res=l.remove((Object) 1);
+        assertFalse(res);
+        assertTrue(l.isEmpty());
+    }
+
 
     /**
      * Test for "isEmpty()".
@@ -468,7 +509,6 @@ public class TestMyPhony {
         //assertEquals((Integer)0,l.get(0));
         assertEquals((Integer)1,l.get(0));
         assertEquals((Integer)2,l.get(1));
-
         assertFalse(res);
     }
 

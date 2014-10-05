@@ -402,7 +402,7 @@ public class PhonyList<E> extends AbstractList<E> implements List<E> {
 	 * ArrayIndexOutOfBoundsException if index is negative.
 	 */
 	private void rangeCheck(int index) {
-		if (index >= size || index<0) // lose one condition : index<0
+		if (index >= size ) // lose one condition : index<0
 			throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
 	}
 
@@ -450,7 +450,7 @@ public class PhonyList<E> extends AbstractList<E> implements List<E> {
 		int r = 0, w = 0;
 		boolean modified = false;
 		try {
-			for (; r < size; r++)
+			for (; r < size; r++) //  r<size-1 is not right
 				if (c.contains(elementData[r]) == complement)
 					elementData[w++] = elementData[r];
 		}
