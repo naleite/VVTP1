@@ -9,9 +9,9 @@ import static org.junit.Assert.*;
 
 /**
  * My own tests.
- * Created by Leite NA on 28 Sept 2014.
  * This is test class for PhonyList.
  * @author NA Leite
+ * @author MARINIER Josian
  * @since 28 Sept 2014
  *
  */

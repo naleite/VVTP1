@@ -7,9 +7,9 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * My own tests for protected methods.
- * Created by Leite NA on 28 Sept 2014.
  * This class is used for the tests with Protected
  * @author NA Leite
+ * @author MARINIER Josian
  * @since 28 Sept 2014
  * */
 public class TestMyPhonyForProtected extends PhonyList {
